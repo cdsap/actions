@@ -61,10 +61,7 @@ export async function getToken(
     if (develocityAccessKey == null) {
         return empty
     }
-    if (enforceUrl === 'true' || develocityAccessKey.isSingleKey()) {
-        if (!serverUrl) {
-            return promiseError('Develocity Server URL not configured')
-        }
+    if (enforceUrl === 'true' && serverUrl) {
         const hostname = extractHostname(serverUrl)
         if (hostname == null) {
             return promiseError('Could not extract hostname from Develocity server URL')

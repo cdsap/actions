@@ -57,13 +57,6 @@ describe('short lived tokens', () => {
             .toThrow('Develocity short lived token request failed http://dev:3333 with status code 500')
     })
 
-    it('get short lived token fails when server url is not set', async () => {
-        expect.assertions(1)
-        await expect(getToken('true', undefined, 'localhost=xyz;host1=key1', ''))
-            .rejects
-            .toThrow('Develocity Server URL not configured')
-    })
-
     it('get short lived token returns null when access key is empty', async () => {
         expect.assertions(1)
         await expect(getToken('true', 'http://dev:3333', '', ''))
